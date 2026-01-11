@@ -24,6 +24,7 @@ defmodule OsnAiPrepWeb.McqLive.TimedExam do
        |> assign(:answers, %{})
        |> assign(:marked_for_review, MapSet.new())
        |> assign(:time_remaining, @exam_duration_seconds)
+       |> assign(:questions_count, @questions_count)
        |> assign(:session_id, nil)}
     else
       {:ok,
@@ -182,7 +183,7 @@ defmodule OsnAiPrepWeb.McqLive.TimedExam do
             time_remaining={@time_remaining}
           />
         <% true -> %>
-          <.exam_intro />
+          <.exam_intro questions_count={@questions_count} />
       <% end %>
     </div>
     """
