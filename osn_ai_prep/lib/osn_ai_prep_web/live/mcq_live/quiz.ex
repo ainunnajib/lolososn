@@ -269,7 +269,7 @@ defmodule OsnAiPrepWeb.McqLive.Quiz do
           </div>
           <div class="w-px h-16 bg-gray-200"></div>
           <div>
-            <p class="text-5xl font-bold <%= if @accuracy >= 70, do: "text-green-600", else: "text-amber-600" %>"><%= @accuracy %>%</p>
+            <p class={"text-5xl font-bold #{if @accuracy >= 70, do: "text-green-600", else: "text-amber-600"}"}><%= @accuracy %>%</p>
             <p class="text-gray-600">Accuracy</p>
           </div>
         </div>
