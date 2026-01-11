@@ -3,13 +3,13 @@ defmodule OsnAiPrep.Problems.Submission do
   import Ecto.Changeset
 
   alias OsnAiPrep.Problems.Problem
+  alias OsnAiPrep.Accounts.User
 
   schema "submissions" do
     field :solved_at, :utc_datetime
     field :notes, :string
 
-    # These will be replaced with belongs_to when User schema exists
-    field :user_id, :id
+    belongs_to :user, User
     belongs_to :problem, Problem
 
     timestamps(type: :utc_datetime)

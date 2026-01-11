@@ -22,9 +22,12 @@ defmodule OsnAiPrepWeb.Router do
 
     get "/", PageController, :home
 
-    # Problem Bank
+    # Problem Bank (public)
     live "/problems", ProblemLive.Index, :index
     live "/problems/:id", ProblemLive.Show, :show
+
+    # Leaderboard (public, but shows extra info if logged in)
+    live "/leaderboard", LeaderboardLive, :index
   end
 
   # Other scopes may use custom stacks.
@@ -60,6 +63,9 @@ defmodule OsnAiPrepWeb.Router do
 
   scope "/", OsnAiPrepWeb do
     pipe_through [:browser, :require_authenticated_user]
+
+    # Dashboard (requires login)
+    live "/dashboard", DashboardLive, :index
 
     get "/users/settings", UserSettingsController, :edit
     put "/users/settings", UserSettingsController, :update

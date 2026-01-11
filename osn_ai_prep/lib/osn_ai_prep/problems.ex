@@ -226,4 +226,161 @@ defmodule OsnAiPrep.Problems do
   def change_submission(%Submission{} = submission, attrs \\ %{}) do
     Submission.changeset(submission, attrs)
   end
+
+  # Dashboard & Leaderboard functions
+
+  @doc """
+  Returns the count of problems solved by a user.
+  """
+  def count_user_submissions(user_id) do
+    from(s in Submission, where: s.user_id == ^user_id, select: count(s.id))
+    |> Repo.one()
+  end
+
+  @doc """
+  Returns submissions for a user with preloaded problems.
+  """
+  def list_user_submissions(user_id) do
+    from(s in Submission,
+      where: s.user_id == ^user_id,
+      preload: [:problem],
+      order_by: [desc: s.solved_at]
+    )
+    |> Repo.all()
+  end
+
+  @doc """
+  Returns recent submissions for a user (last N).
+  """
+  def list_recent_user_submissions(user_id, limit \\ 5) do
+    from(s in Submission,
+      where: s.user_id == ^user_id,
+      preload: [:problem],
+      order_by: [desc: s.solved_at],
+      limit: ^limit
+    )
+    |> Repo.all()
+  end
+
+  @doc """
+  Returns user's progress by topic.
+  Returns a map of %{topic => %{solved: count, total: count}}
+  """
+  def get_user_progress_by_topic(user_id) do
+    # Get all problems grouped by topic
+    all_problems =
+      from(p in Problem, group_by: p.topic, select: {p.topic, count(p.id)})
+      |> Repo.all()
+      |> Map.new()
+
+    # Get solved problems by topic for this user
+    solved_problems =
+      from(s in Submission,
+        join: p in Problem, on: s.problem_id == p.id,
+        where: s.user_id == ^user_id,
+        group_by: p.topic,
+        select: {p.topic, count(s.id)}
+      )
+      |> Repo.all()
+      |> Map.new()
+
+    # Combine into progress map
+    all_problems
+    |> Enum.map(fn {topic, total} ->
+      solved = Map.get(solved_problems, topic, 0)
+      {topic, %{solved: solved, total: total, percentage: safe_percentage(solved, total)}}
+    end)
+    |> Map.new()
+  end
+
+  @doc """
+  Returns user's progress by difficulty.
+  """
+  def get_user_progress_by_difficulty(user_id) do
+    all_problems =
+      from(p in Problem, group_by: p.difficulty, select: {p.difficulty, count(p.id)})
+      |> Repo.all()
+      |> Map.new()
+
+    solved_problems =
+      from(s in Submission,
+        join: p in Problem, on: s.problem_id == p.id,
+        where: s.user_id == ^user_id,
+        group_by: p.difficulty,
+        select: {p.difficulty, count(s.id)}
+      )
+      |> Repo.all()
+      |> Map.new()
+
+    all_problems
+    |> Enum.map(fn {difficulty, total} ->
+      solved = Map.get(solved_problems, difficulty, 0)
+      {difficulty, %{solved: solved, total: total, percentage: safe_percentage(solved, total)}}
+    end)
+    |> Map.new()
+  end
+
+  @doc """
+  Returns leaderboard data - top users by problems solved.
+  """
+  def get_leaderboard(limit \\ 100) do
+    from(s in Submission,
+      join: u in assoc(s, :user),
+      group_by: [u.id, u.email],
+      select: %{
+        user_id: u.id,
+        email: u.email,
+        problems_solved: count(s.id),
+        last_solved_at: max(s.solved_at)
+      },
+      order_by: [desc: count(s.id), asc: max(s.solved_at)],
+      limit: ^limit
+    )
+    |> Repo.all()
+    |> Enum.with_index(1)
+    |> Enum.map(fn {user, rank} -> Map.put(user, :rank, rank) end)
+  end
+
+  @doc """
+  Returns a user's rank on the leaderboard.
+  """
+  def get_user_rank(user_id) do
+    leaderboard = get_leaderboard(1000)
+    Enum.find(leaderboard, fn entry -> entry.user_id == user_id end)
+  end
+
+  @doc """
+  Returns the total count of problems.
+  """
+  def count_problems do
+    Repo.aggregate(Problem, :count, :id)
+  end
+
+  @doc """
+  Check if a user has solved a specific problem.
+  """
+  def user_solved_problem?(user_id, problem_id) do
+    from(s in Submission, where: s.user_id == ^user_id and s.problem_id == ^problem_id)
+    |> Repo.exists?()
+  end
+
+  @doc """
+  Mark a problem as solved by a user.
+  """
+  def mark_problem_solved(user_id, problem_id, notes \\ nil) do
+    attrs = %{
+      user_id: user_id,
+      problem_id: problem_id,
+      solved_at: DateTime.utc_now(),
+      notes: notes
+    }
+
+    case user_solved_problem?(user_id, problem_id) do
+      true -> {:error, :already_solved}
+      false -> create_submission(attrs)
+    end
+  end
+
+  defp safe_percentage(_solved, 0), do: 0
+  defp safe_percentage(solved, total), do: round(solved / total * 100)
 end
