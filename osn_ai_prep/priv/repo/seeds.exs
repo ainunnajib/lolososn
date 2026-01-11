@@ -450,4 +450,547 @@ for question_attrs <- mcq_questions do
 end
 
 IO.puts("Inserted #{length(mcq_questions)} MCQ questions")
+
+# Seed Learning Lessons
+alias OsnAiPrep.Learning.Lesson
+
+Repo.delete_all(OsnAiPrep.Learning.LessonProgress)
+Repo.delete_all(Lesson)
+
+lessons = [
+  # Python Basics Section
+  %{
+    title_en: "Introduction to Python for AI",
+    title_id: "Pengantar Python untuk AI",
+    description_en: "Get started with Python programming fundamentals essential for AI/ML development.",
+    description_id: "Mulai dengan dasar-dasar pemrograman Python yang penting untuk pengembangan AI/ML.",
+    content_en: """
+    # Introduction to Python for AI
+
+    Python is the most popular language for AI and Machine Learning. In this lesson, you'll learn:
+
+    ## Topics Covered
+    - Variables and data types
+    - Control flow (if/else, loops)
+    - Functions and modules
+    - Basic input/output
+
+    ## Why Python for AI?
+    1. **Simple syntax** - Easy to read and write
+    2. **Rich ecosystem** - NumPy, Pandas, scikit-learn, PyTorch
+    3. **Community support** - Large and active community
+    4. **Versatility** - From data analysis to deep learning
+
+    ## Getting Started
+    Open the Colab notebook to practice the basics!
+    """,
+    section: "python_basics",
+    order: 1,
+    difficulty: "beginner",
+    estimated_minutes: 30,
+    topic: "python",
+    is_free: true
+  },
+  %{
+    title_en: "NumPy Fundamentals",
+    title_id: "Dasar-Dasar NumPy",
+    description_en: "Master NumPy arrays and operations - the foundation of numerical computing in Python.",
+    description_id: "Kuasai array dan operasi NumPy - dasar komputasi numerik di Python.",
+    content_en: """
+    # NumPy Fundamentals
+
+    NumPy is the fundamental package for scientific computing in Python.
+
+    ## Key Concepts
+    - Creating arrays from lists
+    - Array shapes and dimensions
+    - Broadcasting rules
+    - Element-wise operations
+    - Slicing and indexing
+
+    ## Common Operations
+    ```python
+    import numpy as np
+
+    # Create arrays
+    a = np.array([1, 2, 3])
+    b = np.zeros((3, 3))
+    c = np.random.randn(2, 3)
+
+    # Operations
+    d = a + b  # Broadcasting
+    e = np.dot(a, b)  # Matrix multiplication
+    ```
+    """,
+    section: "python_basics",
+    order: 2,
+    difficulty: "beginner",
+    estimated_minutes: 45,
+    topic: "numpy",
+    is_free: true
+  },
+  %{
+    title_en: "Pandas for Data Analysis",
+    title_id: "Pandas untuk Analisis Data",
+    description_en: "Learn to manipulate and analyze structured data with Pandas DataFrames.",
+    description_id: "Pelajari cara memanipulasi dan menganalisis data terstruktur dengan Pandas DataFrame.",
+    content_en: """
+    # Pandas for Data Analysis
+
+    Pandas is essential for data manipulation and analysis in Python.
+
+    ## Key Concepts
+    - DataFrames and Series
+    - Reading/writing CSV, Excel, JSON
+    - Filtering and selection
+    - Grouping and aggregation
+    - Handling missing data
+
+    ## Example
+    ```python
+    import pandas as pd
+
+    # Load data
+    df = pd.read_csv('data.csv')
+
+    # Basic operations
+    df.head()
+    df.describe()
+    df[df['age'] > 30]
+    df.groupby('category').mean()
+    ```
+    """,
+    section: "python_basics",
+    order: 3,
+    difficulty: "beginner",
+    estimated_minutes: 45,
+    topic: "pandas",
+    is_free: true
+  },
+  %{
+    title_en: "Data Visualization with Matplotlib",
+    title_id: "Visualisasi Data dengan Matplotlib",
+    description_en: "Create informative visualizations to understand and present your data.",
+    description_id: "Buat visualisasi informatif untuk memahami dan mempresentasikan data Anda.",
+    section: "python_basics",
+    order: 4,
+    difficulty: "beginner",
+    estimated_minutes: 40,
+    topic: "visualization",
+    is_free: false
+  },
+  # ML Fundamentals Section
+  %{
+    title_en: "Introduction to Machine Learning",
+    title_id: "Pengantar Machine Learning",
+    description_en: "Understand the core concepts of machine learning: supervised, unsupervised, and reinforcement learning.",
+    description_id: "Pahami konsep inti machine learning: supervised, unsupervised, dan reinforcement learning.",
+    content_en: """
+    # Introduction to Machine Learning
+
+    Machine Learning is a subset of AI that enables computers to learn from data.
+
+    ## Types of Machine Learning
+
+    ### 1. Supervised Learning
+    - Training with labeled data
+    - Examples: Classification, Regression
+    - Use cases: Spam detection, price prediction
+
+    ### 2. Unsupervised Learning
+    - Training with unlabeled data
+    - Examples: Clustering, Dimensionality Reduction
+    - Use cases: Customer segmentation, anomaly detection
+
+    ### 3. Reinforcement Learning
+    - Learning through interaction
+    - Agent learns from rewards and penalties
+    - Use cases: Game AI, robotics
+
+    ## The ML Pipeline
+    1. Data Collection
+    2. Data Preprocessing
+    3. Feature Engineering
+    4. Model Selection
+    5. Training
+    6. Evaluation
+    7. Deployment
+    """,
+    section: "ml_fundamentals",
+    order: 1,
+    difficulty: "beginner",
+    estimated_minutes: 35,
+    topic: "ml_concepts",
+    is_free: true
+  },
+  %{
+    title_en: "Linear Regression",
+    title_id: "Regresi Linear",
+    description_en: "Learn the simplest and most fundamental regression algorithm.",
+    description_id: "Pelajari algoritma regresi paling sederhana dan fundamental.",
+    section: "ml_fundamentals",
+    order: 2,
+    difficulty: "beginner",
+    estimated_minutes: 40,
+    topic: "regression",
+    is_free: true
+  },
+  %{
+    title_en: "Logistic Regression",
+    title_id: "Regresi Logistik",
+    description_en: "Understand classification using logistic regression and the sigmoid function.",
+    description_id: "Pahami klasifikasi menggunakan regresi logistik dan fungsi sigmoid.",
+    section: "ml_fundamentals",
+    order: 3,
+    difficulty: "beginner",
+    estimated_minutes: 45,
+    topic: "classification",
+    is_free: true
+  },
+  %{
+    title_en: "Decision Trees and Random Forests",
+    title_id: "Decision Trees dan Random Forests",
+    description_en: "Learn tree-based algorithms for classification and regression.",
+    description_id: "Pelajari algoritma berbasis tree untuk klasifikasi dan regresi.",
+    section: "ml_fundamentals",
+    order: 4,
+    difficulty: "intermediate",
+    estimated_minutes: 50,
+    topic: "trees",
+    is_free: false
+  },
+  %{
+    title_en: "Model Evaluation Metrics",
+    title_id: "Metrik Evaluasi Model",
+    description_en: "Master metrics like accuracy, precision, recall, F1, and ROC-AUC.",
+    description_id: "Kuasai metrik seperti akurasi, precision, recall, F1, dan ROC-AUC.",
+    section: "ml_fundamentals",
+    order: 5,
+    difficulty: "intermediate",
+    estimated_minutes: 45,
+    topic: "evaluation",
+    is_free: false
+  },
+  # Neural Networks Section
+  %{
+    title_en: "Perceptrons and Neurons",
+    title_id: "Perceptron dan Neuron",
+    description_en: "Understand the building blocks of neural networks.",
+    description_id: "Pahami blok pembangun neural network.",
+    content_en: """
+    # Perceptrons and Neurons
+
+    The perceptron is the fundamental unit of neural networks.
+
+    ## What is a Perceptron?
+    A perceptron takes multiple inputs, applies weights, sums them, and passes through an activation function.
+
+    ## Mathematical Formulation
+    ```
+    output = activation(sum(weights * inputs) + bias)
+    ```
+
+    ## Key Components
+    1. **Inputs** - Feature values
+    2. **Weights** - Learned parameters
+    3. **Bias** - Offset term
+    4. **Activation** - Non-linear function
+
+    ## Common Activation Functions
+    - Sigmoid: σ(x) = 1 / (1 + e^(-x))
+    - ReLU: max(0, x)
+    - Tanh: (e^x - e^(-x)) / (e^x + e^(-x))
+    """,
+    section: "neural_networks",
+    order: 1,
+    difficulty: "intermediate",
+    estimated_minutes: 40,
+    topic: "perceptron",
+    is_free: true
+  },
+  %{
+    title_en: "Multi-Layer Perceptrons (MLP)",
+    title_id: "Multi-Layer Perceptrons (MLP)",
+    description_en: "Build deep neural networks with multiple hidden layers.",
+    description_id: "Bangun neural network dalam dengan banyak hidden layer.",
+    section: "neural_networks",
+    order: 2,
+    difficulty: "intermediate",
+    estimated_minutes: 50,
+    topic: "mlp",
+    is_free: true
+  },
+  %{
+    title_en: "Backpropagation",
+    title_id: "Backpropagation",
+    description_en: "Understand how neural networks learn through gradient descent.",
+    description_id: "Pahami bagaimana neural network belajar melalui gradient descent.",
+    section: "neural_networks",
+    order: 3,
+    difficulty: "intermediate",
+    estimated_minutes: 55,
+    topic: "training",
+    is_free: true
+  },
+  %{
+    title_en: "PyTorch Fundamentals",
+    title_id: "Dasar-Dasar PyTorch",
+    description_en: "Get started with PyTorch for building neural networks.",
+    description_id: "Mulai dengan PyTorch untuk membangun neural network.",
+    section: "neural_networks",
+    order: 4,
+    difficulty: "intermediate",
+    estimated_minutes: 60,
+    topic: "pytorch",
+    is_free: false
+  },
+  # Deep Learning Section
+  %{
+    title_en: "Introduction to Deep Learning",
+    title_id: "Pengantar Deep Learning",
+    description_en: "Understand deep learning concepts and modern architectures.",
+    description_id: "Pahami konsep deep learning dan arsitektur modern.",
+    section: "deep_learning",
+    order: 1,
+    difficulty: "intermediate",
+    estimated_minutes: 45,
+    topic: "deep_learning",
+    is_free: true
+  },
+  %{
+    title_en: "Regularization Techniques",
+    title_id: "Teknik Regularisasi",
+    description_en: "Prevent overfitting with L1, L2, dropout, and early stopping.",
+    description_id: "Cegah overfitting dengan L1, L2, dropout, dan early stopping.",
+    section: "deep_learning",
+    order: 2,
+    difficulty: "intermediate",
+    estimated_minutes: 40,
+    topic: "regularization",
+    is_free: true
+  },
+  %{
+    title_en: "Optimizers: SGD to Adam",
+    title_id: "Optimizer: SGD sampai Adam",
+    description_en: "Compare different optimization algorithms for training neural networks.",
+    description_id: "Bandingkan berbagai algoritma optimisasi untuk melatih neural network.",
+    section: "deep_learning",
+    order: 3,
+    difficulty: "intermediate",
+    estimated_minutes: 45,
+    topic: "optimization",
+    is_free: true
+  },
+  # Computer Vision Section
+  %{
+    title_en: "Convolutional Neural Networks (CNN)",
+    title_id: "Convolutional Neural Networks (CNN)",
+    description_en: "Learn the architecture that revolutionized computer vision.",
+    description_id: "Pelajari arsitektur yang merevolusi computer vision.",
+    content_en: """
+    # Convolutional Neural Networks
+
+    CNNs are specialized neural networks designed for processing grid-like data, such as images.
+
+    ## Key Components
+
+    ### Convolutional Layers
+    - Apply filters to extract features
+    - Learn edges, textures, patterns
+
+    ### Pooling Layers
+    - Reduce spatial dimensions
+    - Max pooling, average pooling
+
+    ### Fully Connected Layers
+    - Classification at the end
+
+    ## Famous Architectures
+    1. LeNet (1998)
+    2. AlexNet (2012)
+    3. VGG (2014)
+    4. ResNet (2015)
+    5. EfficientNet (2019)
+    """,
+    section: "computer_vision",
+    order: 1,
+    difficulty: "intermediate",
+    estimated_minutes: 50,
+    topic: "cnn",
+    is_free: true
+  },
+  %{
+    title_en: "Image Classification",
+    title_id: "Klasifikasi Gambar",
+    description_en: "Build image classifiers using CNN architectures.",
+    description_id: "Bangun classifier gambar menggunakan arsitektur CNN.",
+    section: "computer_vision",
+    order: 2,
+    difficulty: "intermediate",
+    estimated_minutes: 55,
+    topic: "classification",
+    is_free: true
+  },
+  %{
+    title_en: "Transfer Learning for CV",
+    title_id: "Transfer Learning untuk CV",
+    description_en: "Fine-tune pre-trained models for your custom tasks.",
+    description_id: "Fine-tune model pre-trained untuk tugas kustom Anda.",
+    section: "computer_vision",
+    order: 3,
+    difficulty: "intermediate",
+    estimated_minutes: 50,
+    topic: "transfer_learning",
+    is_free: true
+  },
+  %{
+    title_en: "Object Detection",
+    title_id: "Deteksi Objek",
+    description_en: "Learn YOLO and other object detection architectures.",
+    description_id: "Pelajari YOLO dan arsitektur deteksi objek lainnya.",
+    section: "computer_vision",
+    order: 4,
+    difficulty: "advanced",
+    estimated_minutes: 60,
+    topic: "detection",
+    is_free: false
+  },
+  # NLP Section
+  %{
+    title_en: "Introduction to NLP",
+    title_id: "Pengantar NLP",
+    description_en: "Understand the fundamentals of Natural Language Processing.",
+    description_id: "Pahami dasar-dasar Natural Language Processing.",
+    section: "nlp",
+    order: 1,
+    difficulty: "intermediate",
+    estimated_minutes: 40,
+    topic: "nlp_basics",
+    is_free: true
+  },
+  %{
+    title_en: "Word Embeddings",
+    title_id: "Word Embeddings",
+    description_en: "Learn Word2Vec, GloVe, and how words become vectors.",
+    description_id: "Pelajari Word2Vec, GloVe, dan bagaimana kata menjadi vektor.",
+    section: "nlp",
+    order: 2,
+    difficulty: "intermediate",
+    estimated_minutes: 45,
+    topic: "embeddings",
+    is_free: true
+  },
+  %{
+    title_en: "Transformer Architecture",
+    title_id: "Arsitektur Transformer",
+    description_en: "Understand the architecture behind BERT and GPT.",
+    description_id: "Pahami arsitektur di balik BERT dan GPT.",
+    content_en: """
+    # Transformer Architecture
+
+    Transformers revolutionized NLP and are now used in vision too!
+
+    ## Key Innovations
+
+    ### Self-Attention
+    - Allows each token to attend to all other tokens
+    - Captures long-range dependencies
+    - Parallel computation (unlike RNNs)
+
+    ### Multi-Head Attention
+    - Multiple attention heads learn different patterns
+    - Concatenated and projected
+
+    ### Position Encoding
+    - Since no recurrence, position info added
+    - Sinusoidal or learned embeddings
+
+    ## The Architecture
+    1. Input Embedding + Position Encoding
+    2. N x (Multi-Head Attention + Feed Forward)
+    3. Output Layer
+
+    ## Impact
+    - BERT (2018): Bidirectional encoding
+    - GPT (2018-2023): Autoregressive generation
+    - T5, LLaMA, Claude, and more!
+    """,
+    section: "nlp",
+    order: 3,
+    difficulty: "advanced",
+    estimated_minutes: 60,
+    topic: "transformers",
+    is_free: true
+  },
+  %{
+    title_en: "BERT and Text Classification",
+    title_id: "BERT dan Klasifikasi Teks",
+    description_en: "Fine-tune BERT for various NLP tasks.",
+    description_id: "Fine-tune BERT untuk berbagai tugas NLP.",
+    section: "nlp",
+    order: 4,
+    difficulty: "advanced",
+    estimated_minutes: 55,
+    topic: "bert",
+    is_free: false
+  },
+  # Advanced Topics Section
+  %{
+    title_en: "Vision Transformers (ViT)",
+    title_id: "Vision Transformers (ViT)",
+    description_en: "Apply transformer architecture to computer vision.",
+    description_id: "Terapkan arsitektur transformer ke computer vision.",
+    section: "advanced_topics",
+    order: 1,
+    difficulty: "advanced",
+    estimated_minutes: 50,
+    topic: "vit",
+    is_free: true
+  },
+  %{
+    title_en: "Multimodal AI (CLIP)",
+    title_id: "Multimodal AI (CLIP)",
+    description_en: "Understand models that work with both images and text.",
+    description_id: "Pahami model yang bekerja dengan gambar dan teks.",
+    section: "advanced_topics",
+    order: 2,
+    difficulty: "advanced",
+    estimated_minutes: 55,
+    topic: "multimodal",
+    is_free: true
+  },
+  %{
+    title_en: "Large Language Models",
+    title_id: "Large Language Models",
+    description_en: "Understand how LLMs like GPT and Claude work.",
+    description_id: "Pahami cara kerja LLM seperti GPT dan Claude.",
+    section: "advanced_topics",
+    order: 3,
+    difficulty: "advanced",
+    estimated_minutes: 60,
+    topic: "llm",
+    is_free: true
+  },
+  %{
+    title_en: "AI Ethics and Safety",
+    title_id: "Etika dan Keamanan AI",
+    description_en: "Important considerations for responsible AI development.",
+    description_id: "Pertimbangan penting untuk pengembangan AI yang bertanggung jawab.",
+    section: "advanced_topics",
+    order: 4,
+    difficulty: "beginner",
+    estimated_minutes: 40,
+    topic: "ethics",
+    is_free: false
+  }
+]
+
+# Insert lessons
+for lesson_attrs <- lessons do
+  %Lesson{}
+  |> Lesson.changeset(lesson_attrs)
+  |> Repo.insert!()
+end
+
+IO.puts("Inserted #{length(lessons)} lessons")
 IO.puts("Database seeding completed!")

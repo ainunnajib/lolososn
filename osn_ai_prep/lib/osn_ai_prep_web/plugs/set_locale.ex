@@ -11,7 +11,6 @@ defmodule OsnAiPrepWeb.Plugs.SetLocale do
   """
 
   import Plug.Conn
-  alias OsnAiPrepWeb.Gettext
 
   @supported_locales ["en", "id"]
   @default_locale "en"
@@ -20,7 +19,7 @@ defmodule OsnAiPrepWeb.Plugs.SetLocale do
 
   def call(conn, _opts) do
     locale = get_locale(conn)
-    Gettext.put_locale(locale)
+    Gettext.put_locale(OsnAiPrepWeb.Gettext, locale)
 
     conn
     |> put_session(:locale, locale)

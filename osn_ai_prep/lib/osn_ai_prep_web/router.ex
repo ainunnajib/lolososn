@@ -42,6 +42,10 @@ defmodule OsnAiPrepWeb.Router do
 
     # MCQ Practice (public index, requires login for quiz)
     live "/mcq", McqLive.Index, :index
+
+    # Learning Modules (public, but with paywall)
+    live "/lessons", LessonLive.Index, :index
+    live "/lessons/:id", LessonLive.Show, :show
   end
 
   # Other scopes may use custom stacks.
