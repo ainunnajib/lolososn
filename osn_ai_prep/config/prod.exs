@@ -29,7 +29,8 @@ config :swoosh, local: false
 
 # Use Logger adapter for emails in production (logs emails instead of sending)
 # Replace with a real adapter (Mailgun, SendGrid, Postmark) when ready
-config :osn_ai_prep, OsnAiPrep.Mailer, adapter: Swoosh.Adapters.Logger
+# log_full_email: true shows the complete email body including magic links
+config :osn_ai_prep, OsnAiPrep.Mailer, adapter: Swoosh.Adapters.Logger, log_full_email: true
 
 # Do not print debug messages in production
 config :logger, level: :info
