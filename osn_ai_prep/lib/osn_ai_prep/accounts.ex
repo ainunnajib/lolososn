@@ -281,6 +281,38 @@ defmodule OsnAiPrep.Accounts do
     :ok
   end
 
+  ## OAuth
+
+  @doc """
+  Finds or creates a user from OAuth provider information.
+
+  If a user with the given email already exists, it is returned.
+  Otherwise, a new user is created with the OAuth information.
+  """
+  def find_or_create_oauth_user(%{email: email} = attrs) do
+    case get_user_by_email(email) do
+      nil ->
+        # Create new user from OAuth
+        %User{}
+        |> User.oauth_changeset(attrs)
+        |> Repo.insert()
+
+      user ->
+        # Return existing user, optionally update OAuth fields if not set
+        if is_nil(user.provider) do
+          user
+          |> Ecto.Changeset.change(%{
+            provider: attrs.provider,
+            provider_uid: attrs.provider_uid,
+            name: attrs.name || user.name
+          })
+          |> Repo.update()
+        else
+          {:ok, user}
+        end
+    end
+  end
+
   ## Token helper
 
   defp update_user_and_delete_all_tokens(changeset) do

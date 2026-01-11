@@ -72,6 +72,14 @@ defmodule OsnAiPrepWeb.Router do
 
   ## Authentication routes
 
+  # OAuth routes (Ueberauth)
+  scope "/auth", OsnAiPrepWeb do
+    pipe_through [:browser, :redirect_if_user_is_authenticated]
+
+    get "/:provider", AuthController, :request
+    get "/:provider/callback", AuthController, :callback
+  end
+
   scope "/", OsnAiPrepWeb do
     pipe_through [:browser, :redirect_if_user_is_authenticated]
 

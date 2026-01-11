@@ -22,6 +22,10 @@ defmodule OsnAiPrep.Accounts.User do
     # Profile
     field :name, :string
 
+    # OAuth
+    field :provider, :string
+    field :provider_uid, :string
+
     timestamps(type: :utc_datetime)
   end
 
@@ -141,5 +145,22 @@ defmodule OsnAiPrep.Accounts.User do
   def valid_password?(_, _) do
     Bcrypt.no_user_verify()
     false
+  end
+
+  @doc """
+  A user changeset for OAuth registration.
+  Does not require a password since authentication is done via OAuth provider.
+  """
+  def oauth_changeset(user, attrs) do
+    user
+    |> cast(attrs, [:email, :name, :provider, :provider_uid])
+    |> validate_required([:email, :provider, :provider_uid])
+    |> validate_format(:email, ~r/^[^@,;\s]+@[^@,;\s]+$/,
+      message: "must have the @ sign and no spaces"
+    )
+    |> validate_length(:email, max: 160)
+    |> unsafe_validate_unique(:email, OsnAiPrep.Repo)
+    |> unique_constraint(:email)
+    |> put_change(:confirmed_at, DateTime.utc_now(:second))
   end
 end

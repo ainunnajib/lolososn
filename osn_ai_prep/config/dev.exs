@@ -1,5 +1,8 @@
 import Config
 
+# Set environment
+config :osn_ai_prep, :env, :dev
+
 # Configure your database
 config :osn_ai_prep, OsnAiPrep.Repo,
   username: "postgres",
