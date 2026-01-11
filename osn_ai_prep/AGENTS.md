@@ -1,5 +1,56 @@
 This is a web application written using the Phoenix web framework.
 
+## Project Status (Last Updated: 2026-01-11)
+
+**Live Site:** https://osn-ai-prep.fly.dev/
+
+### Completed Features
+- Core Problem Bank with filters and Colab integration
+- User Authentication (magic link email login)
+- OAuth infrastructure (Google/GitHub) - needs credentials
+- MCQ Practice Mode with 500+ questions
+- Timed Exam Mode (3 hours, 100 questions)
+- Stripe Subscription infrastructure
+- Bilingual Support (EN/ID)
+- Pricing page
+- Leaderboard
+
+### Recent Session (2026-01-11)
+- Fixed login page layout issues
+- Fixed production email crash (Swoosh Logger adapter)
+- Implemented OAuth social login infrastructure
+- Tested and verified email magic link login flow works
+- Deployed all fixes to production
+
+### Known Issues
+- LiveView WebSocket reconnection alerts appear intermittently ("We can't find the internet")
+- OAuth social logins need credentials to be set in Fly.io secrets
+
+### Next Priority Tasks (run `bd ready` for full list)
+1. Set OAuth credentials in Fly.io:
+   ```bash
+   fly secrets set GOOGLE_CLIENT_ID=xxx GOOGLE_CLIENT_SECRET=xxx -a osn-ai-prep
+   fly secrets set GITHUB_CLIENT_ID=xxx GITHUB_CLIENT_SECRET=xxx -a osn-ai-prep
+   ```
+2. Configure real email adapter (Mailgun/SendGrid) for production
+3. Test Stripe integration end-to-end
+4. Create onboarding flow for competition mode selection
+5. Translate remaining UI strings to Bahasa Indonesia
+
+### Deployment
+```bash
+# Deploy to Fly.io
+fly deploy
+
+# Check logs
+fly logs -a osn-ai-prep
+
+# Run migrations
+fly ssh console -a osn-ai-prep -C "/app/bin/migrate"
+```
+
+---
+
 ## Project guidelines
 
 - Use `mix precommit` alias when you are done with all changes and fix any pending issues
