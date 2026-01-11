@@ -116,6 +116,32 @@ defmodule OsnAiPrepWeb.Layouts do
   end
 
   @doc """
+  Provides a language toggle for switching between English and Indonesian.
+  """
+  attr :locale, :string, default: "en"
+
+  def language_toggle(assigns) do
+    ~H"""
+    <div class="relative inline-block">
+      <div class="flex items-center gap-1 bg-base-200 rounded-full p-1">
+        <.link
+          href="?locale=en"
+          class={"px-3 py-1 rounded-full text-sm font-medium transition-colors #{if @locale == "en", do: "bg-white shadow text-gray-900", else: "text-gray-600 hover:text-gray-900"}"}
+        >
+          EN
+        </.link>
+        <.link
+          href="?locale=id"
+          class={"px-3 py-1 rounded-full text-sm font-medium transition-colors #{if @locale == "id", do: "bg-white shadow text-gray-900", else: "text-gray-600 hover:text-gray-900"}"}
+        >
+          ID
+        </.link>
+      </div>
+    </div>
+    """
+  end
+
+  @doc """
   Provides dark vs light theme toggle based on themes defined in app.css.
 
   See <head> in root.html.heex which applies the theme before page load.

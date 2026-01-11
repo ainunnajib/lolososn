@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang={assigns[:locale] || "en"}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="csrf-token" content={get_csrf_token()} />
-    <.live_title default="OsnAiPrep" suffix=" · Phoenix Framework">
+    <.live_title default="OSN AI Prep" suffix=" · AI Olympiad Preparation">
       {assigns[:page_title]}
     </.live_title>
     <link phx-track-static rel="stylesheet" href={~p"/assets/css/app.css"} />
@@ -25,32 +25,107 @@
           setTheme(localStorage.getItem("phx:theme") || "system");
         }
         window.addEventListener("storage", (e) => e.key === "phx:theme" && setTheme(e.newValue || "system"));
-        
+
         window.addEventListener("phx:set-theme", (e) => setTheme(e.target.dataset.phxTheme));
       })();
     </script>
   </head>
-  <body>
-    <ul class="menu menu-horizontal w-full relative z-10 flex items-center gap-4 px-4 sm:px-6 lg:px-8 justify-end">
-      <%= if @current_scope do %>
-        <li>
-          {@current_scope.user.email}
-        </li>
-        <li>
-          <.link href={~p"/users/settings"}>Settings</.link>
-        </li>
-        <li>
-          <.link href={~p"/users/log-out"} method="delete">Log out</.link>
-        </li>
-      <% else %>
-        <li>
-          <.link href={~p"/users/register"}>Register</.link>
-        </li>
-        <li>
-          <.link href={~p"/users/log-in"}>Log in</.link>
-        </li>
-      <% end %>
-    </ul>
+  <body class="bg-gray-50 min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm border-b border-gray-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+          <!-- Logo and main nav -->
+          <div class="flex items-center">
+            <.link href={~p"/"} class="flex items-center">
+              <span class="text-xl font-bold text-indigo-600">OSN AI Prep</span>
+            </.link>
+
+            <div class="hidden md:ml-8 md:flex md:space-x-4">
+              <.link href={~p"/problems"} class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-indigo-600 transition">
+                Problems
+              </.link>
+              <.link href={~p"/mcq"} class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-indigo-600 transition">
+                MCQ Practice
+              </.link>
+              <.link href={~p"/leaderboard"} class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-indigo-600 transition">
+                Leaderboard
+              </.link>
+              <.link href={~p"/pricing"} class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-indigo-600 transition">
+                Pricing
+              </.link>
+            </div>
+          </div>
+
+          <!-- Right side -->
+          <div class="flex items-center space-x-4">
+            <!-- Language Toggle -->
+            <OsnAiPrepWeb.Layouts.language_toggle locale={assigns[:locale] || "en"} />
+
+            <!-- User menu -->
+            <%= if @current_scope do %>
+              <div class="flex items-center space-x-3">
+                <.link href={~p"/dashboard"} class="text-sm font-medium text-gray-700 hover:text-indigo-600">
+                  Dashboard
+                </.link>
+                <.link href={~p"/users/settings"} class="text-sm font-medium text-gray-700 hover:text-indigo-600">
+                  Settings
+                </.link>
+                <.link href={~p"/users/log-out"} method="delete" class="text-sm font-medium text-gray-700 hover:text-indigo-600">
+                  Log out
+                </.link>
+              </div>
+            <% else %>
+              <.link href={~p"/users/log-in"} class="text-sm font-medium text-gray-700 hover:text-indigo-600">
+                Log in
+              </.link>
+              <.link href={~p"/users/register"} class="ml-2 px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 transition">
+                Sign up
+              </.link>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile menu -->
+      <div class="md:hidden border-t border-gray-200">
+        <div class="px-2 pt-2 pb-3 space-y-1">
+          <.link href={~p"/problems"} class="block px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 rounded-lg">
+            Problems
+          </.link>
+          <.link href={~p"/mcq"} class="block px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 rounded-lg">
+            MCQ Practice
+          </.link>
+          <.link href={~p"/leaderboard"} class="block px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 rounded-lg">
+            Leaderboard
+          </.link>
+          <.link href={~p"/pricing"} class="block px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 rounded-lg">
+            Pricing
+          </.link>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main content -->
     {@inner_content}
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 mt-auto">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="text-gray-500 text-sm">
+            OSN AI Prep - Prepare for AI Olympiad success
+          </div>
+          <div class="flex space-x-6 mt-4 md:mt-0">
+            <a href="https://ioai-official.org/" target="_blank" class="text-gray-400 hover:text-gray-600 text-sm">
+              IOAI Official
+            </a>
+            <a href="https://ioai.toki.id/" target="_blank" class="text-gray-400 hover:text-gray-600 text-sm">
+              IOAI Indonesia
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
