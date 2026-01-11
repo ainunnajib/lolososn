@@ -52,6 +52,9 @@ defmodule OsnAiPrepWeb do
     quote do
       use Phoenix.LiveView
 
+      # Mount hook to provide current_scope (user auth) to all LiveViews
+      on_mount OsnAiPrepWeb.UserLiveAuth
+
       unquote(html_helpers())
     end
   end
