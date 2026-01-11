@@ -9,6 +9,19 @@ defmodule OsnAiPrep.Accounts.User do
     field :confirmed_at, :utc_datetime
     field :authenticated_at, :utc_datetime, virtual: true
 
+    # Stripe integration
+    field :stripe_customer_id, :string
+    field :subscription_status, :string, default: "free"
+    field :subscription_plan, :string
+    field :subscription_ends_at, :utc_datetime
+
+    # Competition prep mode
+    field :prep_mode, :string, default: "noai_prelim"
+    field :preferred_language, :string, default: "en"
+
+    # Profile
+    field :name, :string
+
     timestamps(type: :utc_datetime)
   end
 
