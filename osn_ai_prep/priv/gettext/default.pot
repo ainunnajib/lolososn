@@ -1,0 +1,218 @@
+## This is a PO Template file.
+##
+## "msgid"s here are often extracted from source code.
+## Add new translations manually only if they're dynamic
+## or come from database (e.g., error messages).
+##
+## Run "mix gettext.extract" to bring this file up to date.
+## See https://hexdocs.pm/gettext/Gettext.html for instructions.
+
+#, elixir-autogen, elixir-format
+msgid ""
+msgstr ""
+
+## Navigation
+msgid "Home"
+msgstr ""
+
+msgid "Problems"
+msgstr ""
+
+msgid "MCQ Practice"
+msgstr ""
+
+msgid "Leaderboard"
+msgstr ""
+
+msgid "Dashboard"
+msgstr ""
+
+msgid "Pricing"
+msgstr ""
+
+msgid "Sign In"
+msgstr ""
+
+msgid "Sign Up"
+msgstr ""
+
+msgid "Sign Out"
+msgstr ""
+
+msgid "Settings"
+msgstr ""
+
+## Common Actions
+msgid "Start"
+msgstr ""
+
+msgid "Submit"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+msgid "Edit"
+msgstr ""
+
+msgid "Back"
+msgstr ""
+
+msgid "Next"
+msgstr ""
+
+msgid "Previous"
+msgstr ""
+
+## Problem Bank
+msgid "Problem Bank"
+msgstr ""
+
+msgid "Solve problems to improve your AI skills"
+msgstr ""
+
+msgid "All Topics"
+msgstr ""
+
+msgid "All Difficulties"
+msgstr ""
+
+msgid "Easy"
+msgstr ""
+
+msgid "Medium"
+msgstr ""
+
+msgid "Hard"
+msgstr ""
+
+msgid "Open in Colab"
+msgstr ""
+
+msgid "Mark as Solved"
+msgstr ""
+
+## MCQ Practice
+msgid "Test your knowledge with multiple choice questions"
+msgstr ""
+
+msgid "Select Topic"
+msgstr ""
+
+msgid "Select Difficulty"
+msgstr ""
+
+msgid "Number of Questions"
+msgstr ""
+
+msgid "Start Quiz"
+msgstr ""
+
+msgid "Submit Answer"
+msgstr ""
+
+msgid "Next Question"
+msgstr ""
+
+msgid "See Results"
+msgstr ""
+
+msgid "Quiz Complete!"
+msgstr ""
+
+msgid "Correct Answers"
+msgstr ""
+
+msgid "Accuracy"
+msgstr ""
+
+msgid "Question Review"
+msgstr ""
+
+## Dashboard
+msgid "Track your AI Olympiad preparation progress"
+msgstr ""
+
+msgid "Problems Solved"
+msgstr ""
+
+msgid "Completion Rate"
+msgstr ""
+
+msgid "Your Rank"
+msgstr ""
+
+msgid "Progress by Topic"
+msgstr ""
+
+msgid "Progress by Difficulty"
+msgstr ""
+
+msgid "Recent Activity"
+msgstr ""
+
+## Subscription
+msgid "Choose Your Plan"
+msgstr ""
+
+msgid "Unlock your full potential for AI Olympiad success"
+msgstr ""
+
+msgid "Free"
+msgstr ""
+
+msgid "Monthly"
+msgstr ""
+
+msgid "Yearly"
+msgstr ""
+
+msgid "Lifetime Access"
+msgstr ""
+
+msgid "Subscribe Now"
+msgstr ""
+
+msgid "Current Plan"
+msgstr ""
+
+msgid "Already Subscribed"
+msgstr ""
+
+msgid "Upgrade to Premium"
+msgstr ""
+
+## Competition Modes
+msgid "What are you preparing for?"
+msgstr ""
+
+msgid "NOAI Preliminary"
+msgstr ""
+
+msgid "NOAI Final"
+msgstr ""
+
+msgid "OSN AI / Pelatnas"
+msgstr ""
+
+msgid "IOAI Preparation"
+msgstr ""
+
+## Common Messages
+msgid "Loading..."
+msgstr ""
+
+msgid "No results found"
+msgstr ""
+
+msgid "Something went wrong"
+msgstr ""
+
+msgid "Please try again"
+msgstr ""

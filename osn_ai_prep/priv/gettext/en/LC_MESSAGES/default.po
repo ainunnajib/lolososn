@@ -1,0 +1,211 @@
+## English translations for osn_ai_prep.
+## Run "mix gettext.merge priv/gettext" to merge with the template.
+msgid ""
+msgstr ""
+"Language: en\n"
+
+## Navigation
+msgid "Home"
+msgstr "Home"
+
+msgid "Problems"
+msgstr "Problems"
+
+msgid "MCQ Practice"
+msgstr "MCQ Practice"
+
+msgid "Leaderboard"
+msgstr "Leaderboard"
+
+msgid "Dashboard"
+msgstr "Dashboard"
+
+msgid "Pricing"
+msgstr "Pricing"
+
+msgid "Sign In"
+msgstr "Sign In"
+
+msgid "Sign Up"
+msgstr "Sign Up"
+
+msgid "Sign Out"
+msgstr "Sign Out"
+
+msgid "Settings"
+msgstr "Settings"
+
+## Common Actions
+msgid "Start"
+msgstr "Start"
+
+msgid "Submit"
+msgstr "Submit"
+
+msgid "Cancel"
+msgstr "Cancel"
+
+msgid "Save"
+msgstr "Save"
+
+msgid "Delete"
+msgstr "Delete"
+
+msgid "Edit"
+msgstr "Edit"
+
+msgid "Back"
+msgstr "Back"
+
+msgid "Next"
+msgstr "Next"
+
+msgid "Previous"
+msgstr "Previous"
+
+## Problem Bank
+msgid "Problem Bank"
+msgstr "Problem Bank"
+
+msgid "Solve problems to improve your AI skills"
+msgstr "Solve problems to improve your AI skills"
+
+msgid "All Topics"
+msgstr "All Topics"
+
+msgid "All Difficulties"
+msgstr "All Difficulties"
+
+msgid "Easy"
+msgstr "Easy"
+
+msgid "Medium"
+msgstr "Medium"
+
+msgid "Hard"
+msgstr "Hard"
+
+msgid "Open in Colab"
+msgstr "Open in Colab"
+
+msgid "Mark as Solved"
+msgstr "Mark as Solved"
+
+## MCQ Practice
+msgid "Test your knowledge with multiple choice questions"
+msgstr "Test your knowledge with multiple choice questions"
+
+msgid "Select Topic"
+msgstr "Select Topic"
+
+msgid "Select Difficulty"
+msgstr "Select Difficulty"
+
+msgid "Number of Questions"
+msgstr "Number of Questions"
+
+msgid "Start Quiz"
+msgstr "Start Quiz"
+
+msgid "Submit Answer"
+msgstr "Submit Answer"
+
+msgid "Next Question"
+msgstr "Next Question"
+
+msgid "See Results"
+msgstr "See Results"
+
+msgid "Quiz Complete!"
+msgstr "Quiz Complete!"
+
+msgid "Correct Answers"
+msgstr "Correct Answers"
+
+msgid "Accuracy"
+msgstr "Accuracy"
+
+msgid "Question Review"
+msgstr "Question Review"
+
+## Dashboard
+msgid "Track your AI Olympiad preparation progress"
+msgstr "Track your AI Olympiad preparation progress"
+
+msgid "Problems Solved"
+msgstr "Problems Solved"
+
+msgid "Completion Rate"
+msgstr "Completion Rate"
+
+msgid "Your Rank"
+msgstr "Your Rank"
+
+msgid "Progress by Topic"
+msgstr "Progress by Topic"
+
+msgid "Progress by Difficulty"
+msgstr "Progress by Difficulty"
+
+msgid "Recent Activity"
+msgstr "Recent Activity"
+
+## Subscription
+msgid "Choose Your Plan"
+msgstr "Choose Your Plan"
+
+msgid "Unlock your full potential for AI Olympiad success"
+msgstr "Unlock your full potential for AI Olympiad success"
+
+msgid "Free"
+msgstr "Free"
+
+msgid "Monthly"
+msgstr "Monthly"
+
+msgid "Yearly"
+msgstr "Yearly"
+
+msgid "Lifetime Access"
+msgstr "Lifetime Access"
+
+msgid "Subscribe Now"
+msgstr "Subscribe Now"
+
+msgid "Current Plan"
+msgstr "Current Plan"
+
+msgid "Already Subscribed"
+msgstr "Already Subscribed"
+
+msgid "Upgrade to Premium"
+msgstr "Upgrade to Premium"
+
+## Competition Modes
+msgid "What are you preparing for?"
+msgstr "What are you preparing for?"
+
+msgid "NOAI Preliminary"
+msgstr "NOAI Preliminary"
+
+msgid "NOAI Final"
+msgstr "NOAI Final"
+
+msgid "OSN AI / Pelatnas"
+msgstr "OSN AI / Pelatnas"
+
+msgid "IOAI Preparation"
+msgstr "IOAI Preparation"
+
+## Common Messages
+msgid "Loading..."
+msgstr "Loading..."
+
+msgid "No results found"
+msgstr "No results found"
+
+msgid "Something went wrong"
+msgstr "Something went wrong"
+
+msgid "Please try again"
+msgstr "Please try again"

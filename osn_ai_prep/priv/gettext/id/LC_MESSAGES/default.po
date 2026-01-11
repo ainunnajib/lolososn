@@ -1,0 +1,211 @@
+## Indonesian translations for osn_ai_prep.
+## Run "mix gettext.merge priv/gettext" to merge with the template.
+msgid ""
+msgstr ""
+"Language: id\n"
+
+## Navigation
+msgid "Home"
+msgstr "Beranda"
+
+msgid "Problems"
+msgstr "Soal"
+
+msgid "MCQ Practice"
+msgstr "Latihan Pilihan Ganda"
+
+msgid "Leaderboard"
+msgstr "Papan Peringkat"
+
+msgid "Dashboard"
+msgstr "Dasbor"
+
+msgid "Pricing"
+msgstr "Harga"
+
+msgid "Sign In"
+msgstr "Masuk"
+
+msgid "Sign Up"
+msgstr "Daftar"
+
+msgid "Sign Out"
+msgstr "Keluar"
+
+msgid "Settings"
+msgstr "Pengaturan"
+
+## Common Actions
+msgid "Start"
+msgstr "Mulai"
+
+msgid "Submit"
+msgstr "Kirim"
+
+msgid "Cancel"
+msgstr "Batal"
+
+msgid "Save"
+msgstr "Simpan"
+
+msgid "Delete"
+msgstr "Hapus"
+
+msgid "Edit"
+msgstr "Ubah"
+
+msgid "Back"
+msgstr "Kembali"
+
+msgid "Next"
+msgstr "Selanjutnya"
+
+msgid "Previous"
+msgstr "Sebelumnya"
+
+## Problem Bank
+msgid "Problem Bank"
+msgstr "Bank Soal"
+
+msgid "Solve problems to improve your AI skills"
+msgstr "Selesaikan soal untuk meningkatkan kemampuan AI kamu"
+
+msgid "All Topics"
+msgstr "Semua Topik"
+
+msgid "All Difficulties"
+msgstr "Semua Tingkat Kesulitan"
+
+msgid "Easy"
+msgstr "Mudah"
+
+msgid "Medium"
+msgstr "Sedang"
+
+msgid "Hard"
+msgstr "Sulit"
+
+msgid "Open in Colab"
+msgstr "Buka di Colab"
+
+msgid "Mark as Solved"
+msgstr "Tandai Selesai"
+
+## MCQ Practice
+msgid "Test your knowledge with multiple choice questions"
+msgstr "Uji pengetahuanmu dengan soal pilihan ganda"
+
+msgid "Select Topic"
+msgstr "Pilih Topik"
+
+msgid "Select Difficulty"
+msgstr "Pilih Tingkat Kesulitan"
+
+msgid "Number of Questions"
+msgstr "Jumlah Soal"
+
+msgid "Start Quiz"
+msgstr "Mulai Kuis"
+
+msgid "Submit Answer"
+msgstr "Kirim Jawaban"
+
+msgid "Next Question"
+msgstr "Soal Berikutnya"
+
+msgid "See Results"
+msgstr "Lihat Hasil"
+
+msgid "Quiz Complete!"
+msgstr "Kuis Selesai!"
+
+msgid "Correct Answers"
+msgstr "Jawaban Benar"
+
+msgid "Accuracy"
+msgstr "Akurasi"
+
+msgid "Question Review"
+msgstr "Ulasan Soal"
+
+## Dashboard
+msgid "Track your AI Olympiad preparation progress"
+msgstr "Pantau progres persiapan Olimpiade AI kamu"
+
+msgid "Problems Solved"
+msgstr "Soal Diselesaikan"
+
+msgid "Completion Rate"
+msgstr "Tingkat Penyelesaian"
+
+msgid "Your Rank"
+msgstr "Peringkat Kamu"
+
+msgid "Progress by Topic"
+msgstr "Progres per Topik"
+
+msgid "Progress by Difficulty"
+msgstr "Progres per Tingkat Kesulitan"
+
+msgid "Recent Activity"
+msgstr "Aktivitas Terbaru"
+
+## Subscription
+msgid "Choose Your Plan"
+msgstr "Pilih Paket Kamu"
+
+msgid "Unlock your full potential for AI Olympiad success"
+msgstr "Raih potensi maksimalmu untuk sukses di Olimpiade AI"
+
+msgid "Free"
+msgstr "Gratis"
+
+msgid "Monthly"
+msgstr "Bulanan"
+
+msgid "Yearly"
+msgstr "Tahunan"
+
+msgid "Lifetime Access"
+msgstr "Akses Selamanya"
+
+msgid "Subscribe Now"
+msgstr "Berlangganan Sekarang"
+
+msgid "Current Plan"
+msgstr "Paket Saat Ini"
+
+msgid "Already Subscribed"
+msgstr "Sudah Berlangganan"
+
+msgid "Upgrade to Premium"
+msgstr "Upgrade ke Premium"
+
+## Competition Modes
+msgid "What are you preparing for?"
+msgstr "Kamu sedang mempersiapkan apa?"
+
+msgid "NOAI Preliminary"
+msgstr "NOAI Babak Penyisihan"
+
+msgid "NOAI Final"
+msgstr "NOAI Babak Final"
+
+msgid "OSN AI / Pelatnas"
+msgstr "OSN AI / Pelatnas"
+
+msgid "IOAI Preparation"
+msgstr "Persiapan IOAI"
+
+## Common Messages
+msgid "Loading..."
+msgstr "Memuat..."
+
+msgid "No results found"
+msgstr "Tidak ada hasil ditemukan"
+
+msgid "Something went wrong"
+msgstr "Terjadi kesalahan"
+
+msgid "Please try again"
+msgstr "Silakan coba lagi"
