@@ -17,6 +17,13 @@ defmodule OsnAiPrepWeb.Router do
     plug :accepts, ["json"]
   end
 
+  # Stripe webhooks (no CSRF, no auth)
+  scope "/webhooks", OsnAiPrepWeb do
+    pipe_through :api
+
+    post "/stripe", WebhookController, :stripe
+  end
+
   scope "/", OsnAiPrepWeb do
     pipe_through :browser
 
@@ -28,6 +35,12 @@ defmodule OsnAiPrepWeb.Router do
 
     # Leaderboard (public, but shows extra info if logged in)
     live "/leaderboard", LeaderboardLive, :index
+
+    # Pricing page (public)
+    live "/pricing", PricingLive, :index
+
+    # MCQ Practice (public index, requires login for quiz)
+    live "/mcq", McqLive.Index, :index
   end
 
   # Other scopes may use custom stacks.
@@ -66,6 +79,15 @@ defmodule OsnAiPrepWeb.Router do
 
     # Dashboard (requires login)
     live "/dashboard", DashboardLive, :index
+
+    # Stripe Checkout (requires login)
+    get "/checkout/success", CheckoutController, :success
+    get "/checkout/:plan", CheckoutController, :create
+    get "/billing", CheckoutController, :portal
+
+    # MCQ Quiz (requires login)
+    live "/mcq/quiz", McqLive.Quiz, :quiz
+    live "/mcq/timed", McqLive.TimedExam, :timed
 
     get "/users/settings", UserSettingsController, :edit
     put "/users/settings", UserSettingsController, :update

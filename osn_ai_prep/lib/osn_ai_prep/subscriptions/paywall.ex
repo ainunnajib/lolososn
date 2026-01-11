@@ -43,7 +43,9 @@ defmodule OsnAiPrep.Subscriptions.Paywall do
   Checks if a user can access MCQ practice.
   Returns :unlimited for premium users, or remaining count for free users.
   """
-  def mcq_access(%User{} = user, attempts_count \\ 0) do
+  def mcq_access(user, attempts_count \\ 0)
+
+  def mcq_access(%User{} = user, attempts_count) do
     if has_premium?(user) do
       :unlimited
     else
@@ -60,7 +62,9 @@ defmodule OsnAiPrep.Subscriptions.Paywall do
   @doc """
   Checks if a user can take a mock exam.
   """
-  def can_take_mock_exam?(%User{} = user, exams_taken \\ 0) do
+  def can_take_mock_exam?(user, exams_taken \\ 0)
+
+  def can_take_mock_exam?(%User{} = user, exams_taken) do
     has_premium?(user) or exams_taken < @free_mock_exam_limit
   end
 
